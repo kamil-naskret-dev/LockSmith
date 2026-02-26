@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://lock-smith-kappa.vercel.app/sitemap.xml
