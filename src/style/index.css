@@ -2,6 +2,42 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* jetbrains-mono-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/jetbrains-mono-v24-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* jetbrains-mono-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/jetbrains-mono-v24-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* jetbrains-mono-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/jetbrains-mono-v24-latin-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* jetbrains-mono-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/jetbrains-mono-v24-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -43,9 +79,17 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-ds-primary-950: var(--ds-color-primary-950);
+  --color-ds-primary-900: var(--ds-color-primary-900);
+  --color-ds-primary-800: var(--ds-color-primary-800);
+  --color-ds-gray-600: var(--ds-color-gray-600);
 }
 
 :root {
+  --ds-color-primary-950: oklch(13.231% 0.00966 297.603);
+  --ds-color-primary-900: oklch(19.176% 0.01612 290.505);
+  --ds-color-primary-800: oklch(19.176% 0.01612 290.505);
+  --ds-color-gray-600: oklch(60.043% 0.03193 294.111);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -120,5 +164,6 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: "JetBrains Mono", monospace;
   }
 }
