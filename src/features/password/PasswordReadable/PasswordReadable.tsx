@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input/input";
-import { PasswordCopy } from "../subcomponents/PasswordCopy";
+import { PasswordCopy } from "../subcomponents/PasswordCopy/PasswordCopy";
 
 export const PasswordReadable = () => {
   const password = "P4$5W";
