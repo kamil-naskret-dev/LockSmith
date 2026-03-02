@@ -82,14 +82,18 @@
   --color-ds-primary-950: var(--ds-color-primary-950);
   --color-ds-primary-900: var(--ds-color-primary-900);
   --color-ds-primary-800: var(--ds-color-primary-800);
+  --color-ds-gray-700: var(--ds-color-gray-700);
   --color-ds-gray-600: var(--ds-color-gray-600);
+  --color-ds-accent-400: var(--ds-color-accent-400);
 }
 
 :root {
   --ds-color-primary-950: oklch(13.231% 0.00966 297.603);
   --ds-color-primary-900: oklch(19.176% 0.01612 290.505);
   --ds-color-primary-800: oklch(19.176% 0.01612 290.505);
+  --ds-color-gray-700: oklch(44.605% 0.01303 291.536);
   --ds-color-gray-600: oklch(60.043% 0.03193 294.111);
+  --ds-color-accent-400: oklch(92.286% 0.13911 147.297);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
