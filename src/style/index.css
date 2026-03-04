@@ -82,8 +82,11 @@
   --color-ds-primary-950: var(--ds-color-primary-950);
   --color-ds-primary-900: var(--ds-color-primary-900);
   --color-ds-primary-800: var(--ds-color-primary-800);
+  --color-ds-gray-850: var(--ds-color-gray-850);
+  --color-ds-gray-800: var(--ds-color-gray-800);
   --color-ds-gray-700: var(--ds-color-gray-700);
   --color-ds-gray-600: var(--ds-color-gray-600);
+  --color-ds-gray-200: var(--ds-color-gray-200);
   --color-ds-accent-400: var(--ds-color-accent-400);
 }
 
@@ -91,8 +94,11 @@
   --ds-color-primary-950: oklch(13.231% 0.00966 297.603);
   --ds-color-primary-900: oklch(19.176% 0.01612 290.505);
   --ds-color-primary-800: oklch(19.176% 0.01612 290.505);
+  --ds-color-gray-850: oklch(20.948% 0.01576 290.68);
+  --ds-color-gray-800: oklch(26.112% 0.01677 290.256);
   --ds-color-gray-700: oklch(44.605% 0.01303 291.536);
   --ds-color-gray-600: oklch(60.043% 0.03193 294.111);
+  --ds-color-gray-200: oklch(92.412% 0.00688 295.088);
   --ds-color-accent-400: oklch(92.286% 0.13911 147.297);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
