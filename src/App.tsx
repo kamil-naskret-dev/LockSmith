@@ -1,4 +1,9 @@
+import { ArrowRight } from "lucide-react";
+import { Button } from "./components/ui/button/button";
 import { PasswordReadable } from "./features/password/PasswordReadable/PasswordReadable";
+import { PasswordLength } from "./features/password/subcomponents/PasswordLength/PasswordLength";
+import { PasswordOptions } from "./features/password/subcomponents/PasswordOptions/PasswordOptions";
+import { PasswordQuality } from "./features/password/subcomponents/PasswordQuality/PasswordQuality";
 
 export const App = () => {
   return (
@@ -11,7 +16,14 @@ export const App = () => {
           <div className="px-4 sm:px-8 py-4 bg-ds-primary-800">
             <PasswordReadable />
           </div>
-          <form className="px-4 sm:px-8 py-6 bg-ds-primary-800">BOTTOM</form>
+          <form className="px-4 sm:px-8 py-6 bg-ds-primary-800 flex flex-col gap-8">
+            <PasswordLength />
+            <PasswordOptions />
+            <PasswordQuality />
+            <Button type="submit" variant="primary" size="form-submit">
+              Generate <ArrowRight aria-hidden="true" />
+            </Button>
+          </form>
         </section>
       </div>
     </main>
