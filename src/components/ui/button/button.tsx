@@ -20,9 +20,9 @@ const buttonVariants = cva(
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
         primary:
-          "rounded-none flex items-center gap-6 bg-ds-accent-400 text-ds-gray-800 uppercase",
+          "border-2 border-ds-accent-400 rounded-none flex items-center gap-6 bg-ds-accent-400 text-ds-gray-800 uppercase focus-visible:bg-transparent focus-visible:text-ds-accent-400 hover:bg-transparent hover:text-ds-accent-400 focus-visible:ring-0 focus-visible:[&_*]:text-white hover:[&_*]:text-white focus-visible:border-ds-accent-400",
         naked:
-          "flex items-center justify-center bg-transparent hover:bg-transparent  focus-visible:ring-0  focus-visible:[&_*]:text-white hover:[&_*]:text-white",
+          "flex items-center justify-center  bg-transparent hover:bg-transparent  focus-visible:ring-0  focus-visible:[&_*]:text-white hover:[&_*]:text-white",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -34,7 +34,8 @@ const buttonVariants = cva(
         "icon-sm": "size-8",
         "icon-lg": "size-10",
         "icon-only": "size-9 p-0",
-        "form-submit": "h-16 p-6 text-lg [&_svg]:size-4",
+        "form-submit":
+          "h-14 sm:h-16 p-4 sm:p-6 text-base sm:text-lg [&_svg]:size-4",
       },
     },
     defaultVariants: {

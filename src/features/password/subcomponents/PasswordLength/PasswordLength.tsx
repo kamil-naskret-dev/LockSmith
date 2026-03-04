@@ -11,10 +11,10 @@ export const PasswordLength = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <p className="text-lg text-ds-gray-200 font-bold leading-6">
+        <p className="text-base leading-5 sm:text-lg text-ds-gray-200 font-bold sm:leading-6">
           Character Length
         </p>
-        <p className="text-[2rem] leading-10.5 text-ds-accent-400 font-bold">
+        <p className="text-2xl leading-8 sm:text-[2rem] sm:leading-10.5 text-ds-accent-400 font-bold">
           {length}
         </p>
       </div>
