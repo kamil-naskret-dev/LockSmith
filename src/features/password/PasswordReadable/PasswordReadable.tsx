@@ -1,9 +1,11 @@
 import { Input } from "@/components/ui/input/input";
 import { PasswordCopy } from "../subcomponents/PasswordCopy/PasswordCopy";
 
-export const PasswordReadable = () => {
-  const password = "P4$5W";
+type PasswordReadableProps = {
+  password: string;
+};
 
+export const PasswordReadable = ({ password }: PasswordReadableProps) => {
   return (
     <div className="relative">
       <label htmlFor="generated-password" className="sr-only">

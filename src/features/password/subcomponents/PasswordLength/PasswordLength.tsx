@@ -1,11 +1,13 @@
 import { Slider } from "@/components/ui/slider/slider";
-import { useState } from "react";
 
-export const PasswordLength = () => {
-  const [length, setLength] = useState(10);
+type PasswordLengthProps = {
+  length: number;
+  onChange: (value: number) => void;
+};
 
+export const PasswordLength = ({ length, onChange }: PasswordLengthProps) => {
   const handleChange = (value: number[]) => {
-    setLength(value[0]);
+    onChange(value[0]);
   };
 
   return (
