@@ -1,33 +1,35 @@
-const CHAR_SETS = {
-  uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  lowercase: "abcdefghijklmnopqrstuvwxyz",
-  numbers: "0123456789",
-  symbols: "!@#$%^&*()_+[]{}|;:,.<>?",
-};
+import { getRandomInt, shuffle } from "@/helpers/random";
+import { CHAR_SETS } from "../config/config";
+import type { PasswordOptionsValue } from "../subcomponents/PasswordOptions/PasswordOptions";
 
-type Options = {
+type GeneratePasswordOptions = PasswordOptionsValue & {
   length: number;
-  uppercase: boolean;
-  lowercase: boolean;
-  numbers: boolean;
-  symbols: boolean;
+  seed?: number;
 };
 
-export function generatePassword(options: Options) {
-  const { length, ...flags } = options;
+export function generatePassword(options: GeneratePasswordOptions) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { length, seed: _, ...flags } = options;
 
-  let chars = "";
+  const enabledSets = Object.entries(flags)
+    .filter(([, enabled]) => enabled)
+    .map(([key]) => CHAR_SETS[key as keyof typeof CHAR_SETS]);
 
-  Object.entries(flags).forEach(([key, enabled]) => {
-    if (enabled) {
-      chars += CHAR_SETS[key as keyof typeof CHAR_SETS];
-    }
-  });
+  if (!enabledSets.length) return "";
 
-  if (!chars) return "";
+  const allChars = enabledSets.join("");
 
-  return Array.from(
-    { length },
-    () => chars[Math.floor(Math.random() * chars.length)],
-  ).join("");
+  const password: string[] = [];
+
+  for (const set of enabledSets) {
+    password.push(set[getRandomInt(set.length)]);
+  }
+
+  while (password.length < length) {
+    password.push(allChars[getRandomInt(allChars.length)]);
+  }
+
+  shuffle(password);
+
+  return password.join("");
 }

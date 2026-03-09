@@ -6,7 +6,7 @@ import {
   FieldSet,
 } from "@/components/ui/field/field";
 
-type PasswordOptionsValue = {
+export type PasswordOptionsValue = {
   uppercase: boolean;
   lowercase: boolean;
   numbers: boolean;
@@ -18,53 +18,44 @@ type PasswordOptionsProps = {
   onChange: (value: PasswordOptionsValue) => void;
 };
 
+const OPTIONS_LABELS: Record<keyof PasswordOptionsValue, string> = {
+  uppercase: "Include Uppercase Letters",
+  lowercase: "Include Lowercase Letters",
+  numbers: "Include Numbers",
+  symbols: "Include Symbols",
+};
+
 export const PasswordOptions = ({
   options,
   onChange,
 }: PasswordOptionsProps) => {
   const handleChange =
     (key: keyof PasswordOptionsValue) => (checked: boolean) => {
-      onChange({
+      const next = {
         ...options,
         [key]: checked,
-      });
+      };
+
+      if (!Object.values(next).some(Boolean)) return;
+
+      onChange(next);
     };
 
   return (
     <FieldSet>
       <FieldLegend className="sr-only">Character Types</FieldLegend>
-      <Field orientation="horizontal">
-        <Checkbox
-          id="uppercase"
-          checked={options.uppercase}
-          onCheckedChange={handleChange("uppercase")}
-        />
-        <FieldLabel htmlFor="uppercase">Include Uppercase Letters</FieldLabel>
-      </Field>
-      <Field orientation="horizontal">
-        <Checkbox
-          id="lowercase"
-          checked={options.lowercase}
-          onCheckedChange={handleChange("lowercase")}
-        />
-        <FieldLabel htmlFor="lowercase">Include Lowercase Letters</FieldLabel>
-      </Field>
-      <Field orientation="horizontal">
-        <Checkbox
-          id="numbers"
-          checked={options.numbers}
-          onCheckedChange={handleChange("numbers")}
-        />
-        <FieldLabel htmlFor="numbers">Include Numbers</FieldLabel>
-      </Field>
-      <Field orientation="horizontal">
-        <Checkbox
-          id="symbols"
-          checked={options.symbols}
-          onCheckedChange={handleChange("symbols")}
-        />
-        <FieldLabel htmlFor="symbols">Include Symbols</FieldLabel>
-      </Field>
+      {Object.keys(options).map((key) => (
+        <Field key={key} orientation="horizontal">
+          <Checkbox
+            id={key}
+            checked={options[key as keyof typeof options]}
+            onCheckedChange={handleChange(key as keyof typeof options)}
+          />
+          <FieldLabel htmlFor={key}>
+            {OPTIONS_LABELS[key as keyof typeof OPTIONS_LABELS]}
+          </FieldLabel>
+        </Field>
+      ))}
     </FieldSet>
   );
 };
