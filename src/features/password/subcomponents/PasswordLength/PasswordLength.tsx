@@ -1,11 +1,18 @@
 import { Slider } from "@/components/ui/slider/slider";
-import { useState } from "react";
 
-export const PasswordLength = () => {
-  const [length, setLength] = useState(10);
+type PasswordLengthProps = {
+  length: number;
+  onChange: (value: number) => void;
+  min: number;
+};
 
+export const PasswordLength = ({
+  length,
+  onChange,
+  min,
+}: PasswordLengthProps) => {
   const handleChange = (value: number[]) => {
-    setLength(value[0]);
+    onChange(value[0]);
   };
 
   return (
@@ -20,7 +27,7 @@ export const PasswordLength = () => {
       </div>
       <Slider
         max={20}
-        min={1}
+        min={min}
         defaultValue={[length]}
         step={1}
         onValueChange={handleChange}
