@@ -15,6 +15,7 @@ export const App = () => {
     password,
     strength,
     generate,
+    minLength,
   } = usePasswordGenerator();
 
   return (
@@ -34,7 +35,11 @@ export const App = () => {
               generate();
             }}
           >
-            <PasswordLength length={length} onChange={setLength} />
+            <PasswordLength
+              length={length}
+              onChange={setLength}
+              min={minLength}
+            />
             <PasswordOptions options={options} onChange={setOptions} />
             <PasswordQuality score={strength} />
             <Button type="submit" variant="primary" size="form-submit">

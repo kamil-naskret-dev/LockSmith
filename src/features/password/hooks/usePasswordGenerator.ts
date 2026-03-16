@@ -13,10 +13,25 @@ const DEFAULT_OPTIONS: PasswordOptionsValue = {
 };
 
 export const usePasswordGenerator = () => {
-  const [length, setLength] = useState(DEFAULT_LENGTH);
-  const [options, setOptions] = useState<PasswordOptionsValue>(DEFAULT_OPTIONS);
+  const [length, setLengthState] = useState(DEFAULT_LENGTH);
+  const [options, setOptionsState] =
+    useState<PasswordOptionsValue>(DEFAULT_OPTIONS);
 
   const [seed, setSeed] = useState(0);
+
+  const minLength = Object.values(options).filter(Boolean).length;
+
+  const setLength = (value: number) => {
+    setLengthState(Math.max(value, minLength));
+  };
+
+  const setOptions = (next: PasswordOptionsValue) => {
+    const nextMinLength = Object.values(next).filter(Boolean).length;
+
+    setOptionsState(next);
+
+    setLengthState((prev) => Math.max(prev, nextMinLength));
+  };
 
   const password = useMemo(() => {
     return generatePassword({
@@ -29,8 +44,9 @@ export const usePasswordGenerator = () => {
   const strength = calculateStrength(password);
 
   const generate = () => {
-    setSeed((prevSeed) => prevSeed + 1);
+    setSeed((prev) => prev + 1);
   };
+
   return {
     length,
     setLength,
@@ -39,5 +55,6 @@ export const usePasswordGenerator = () => {
     password,
     strength,
     generate,
+    minLength,
   };
 };

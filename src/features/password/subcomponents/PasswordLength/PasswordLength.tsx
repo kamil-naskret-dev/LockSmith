@@ -3,9 +3,14 @@ import { Slider } from "@/components/ui/slider/slider";
 type PasswordLengthProps = {
   length: number;
   onChange: (value: number) => void;
+  min: number;
 };
 
-export const PasswordLength = ({ length, onChange }: PasswordLengthProps) => {
+export const PasswordLength = ({
+  length,
+  onChange,
+  min,
+}: PasswordLengthProps) => {
   const handleChange = (value: number[]) => {
     onChange(value[0]);
   };
@@ -22,7 +27,7 @@ export const PasswordLength = ({ length, onChange }: PasswordLengthProps) => {
       </div>
       <Slider
         max={20}
-        min={1}
+        min={min}
         defaultValue={[length]}
         step={1}
         onValueChange={handleChange}

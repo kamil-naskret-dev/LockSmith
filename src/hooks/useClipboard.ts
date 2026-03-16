@@ -15,6 +15,11 @@ export const useClipboard = (options: UseClipboardOptions = {}) => {
       if (!value) return false;
 
       try {
+        if (navigator.clipboard === undefined) {
+          console.warn("Clipboard API not supported");
+          return false;
+        }
+
         await navigator.clipboard.writeText(value);
         setCopied(true);
 
